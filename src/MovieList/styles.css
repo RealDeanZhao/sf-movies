@@ -1,0 +1,5 @@
+.movie-list {
+    position: relative;
+    overflow-y: auto;
+    height: 90vh;
+}

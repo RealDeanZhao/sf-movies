@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import GoogleMap from 'google-map-react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-import Sidebar from './Sidebar/Sidebar.js';
+import Sidebar from './Sidebar';
+import Map from './Map';
 
 class App extends Component {
 
@@ -17,13 +18,9 @@ class App extends Component {
     return (
       <div className={'App'}>
         <div className={'main'}>
-          <GoogleMap
-            bootstrapURLKeys={{ key: 'AIzaSyAIp1gbo-KDCOkvms-ezubPN4Ao1BJCQkg' }}
-            defaultCenter={this.props.center}
-            defaultZoom={this.props.zoom}>
-          </GoogleMap>
+          <Map></Map>
         </div>
-        <div className={'sidebar'}>
+        <div>
           <Sidebar />
         </div>
       </div>
