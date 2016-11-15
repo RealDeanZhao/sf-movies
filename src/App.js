@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import { connect } from 'react-redux';
 
 import './App.css';
 import Sidebar from './Sidebar';
 import Map from './Map';
+import { _load } from './redux/modules/movies';
 
 class App extends Component {
 
@@ -14,18 +16,32 @@ class App extends Component {
 
   shouldComponentUpdate = shouldPureComponentUpdate;
 
+  componentDidMount() {
+    const {dispatch} = this.props;
+    var query = {
+      limit: 10,
+      page: 1,
+      title: 'Ant-Man'
+    }
+    dispatch(_load(query));
+  };
   render() {
+    const {movies} = this.props;
     return (
       <div className={'App'}>
         <div className={'main'}>
-          <Map></Map>
+          <Map movies={movies}></Map>
         </div>
         <div>
-          <Sidebar />
+          <Sidebar movies={movies} />
         </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => ({
+  movies: state.movies
+});
+
+export default connect(mapStateToProps)(App);

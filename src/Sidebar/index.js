@@ -9,6 +9,7 @@ class Sidebar extends Component {
     shouldComponentUpdate = shouldPureComponentUpdate;
 
     render() {
+        const {movies} = this.props;
         return (
             <div className='sidebar'>
                 <div className='searchbox'>
@@ -20,7 +21,7 @@ class Sidebar extends Component {
                     </div>
                 </div>
                 <div>
-                    <MovieList></MovieList>
+                    <MovieList movies={movies}></MovieList>
                 </div>
             </div>
         );

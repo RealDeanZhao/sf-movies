@@ -52,9 +52,9 @@ export function loadError(error) {
 export const _load = (query) => {
     return (dispatch) => {
         dispatch(load());
-        fetch(`/api/movies?limit=10&page=1`).then(function(res){
+        fetch(`/api/movies?limit=${query.limit}&page=${query.page}&title=${query.title}`).then(function (res) {
             return res.json();
-        }).then(function(json){
+        }).then(function (json) {
             const result = json;
             dispatch(loadSuccess(result))
         });
