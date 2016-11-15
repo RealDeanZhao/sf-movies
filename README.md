@@ -14,6 +14,8 @@ user should be able to filter the view using autocompletion search.
 3. The user can search the movies by the title. It supports fuzzy search.
 
 ## Some snapshots of the app:
+There are not many markers on the map because the GOOGLE API has some limit for the request numbers to get the coordinate information. So I only get 10 records per page.
+
 ![image](https://github.com/zestxjest/sf-movies/blob/master/SearchByTitle.jpg?raw=true)
 
 ![image](https://github.com/zestxjest/sf-movies/blob/master/Pagination.jpg?raw=true)
@@ -56,3 +58,4 @@ user should be able to filter the view using autocompletion search.
 
 ### Note
 > The client side will listen to port 3000 and it will proxy all the http requests to port 3001(sever side application).
+> Not all the locations in the database are part of San Francisco..
