@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import GoogleMap from 'google-map-react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+
+import './App.css';
 import Sidebar from './Sidebar';
 import Map from './Map';
 

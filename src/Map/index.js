@@ -6,7 +6,8 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 class Map extends Component {
 
     static defaultProps = {
-        center: { lat: 37.77, lng: -122.41 },
+        // coordindate of HAIGHT ASHBURY
+        center: { lat: 37.770015, lng: -122.446937 },
         zoom: 13
     };
 
@@ -14,7 +15,7 @@ class Map extends Component {
 
     render() {
         return (
-            <div className={'map'}>
+            <div className='map'>
                 <GoogleMap
                     bootstrapURLKeys={{ key: 'AIzaSyAIp1gbo-KDCOkvms-ezubPN4Ao1BJCQkg' }}
                     defaultCenter={this.props.center}
