@@ -14,9 +14,9 @@ user should be able to filter the view using autocompletion search.
 3. The user can search the movies by the title. It supports fuzzy search.
 
 ## Some snapshots of the app:
-![image](https://github.com/zestxjest/sf-movies/Pagination.jpg)
+![image](https://github.com/zestxjest/sf-movies/blob/master/SearchByTitle.jpg?raw=true)
 
-![image](https://github.com/zestxjest/sf-movies/SearchByTitle.jpg)
+![image](https://github.com/zestxjest/sf-movies/blob/master/Pagination.jpg?raw=true)
 
 ## Technical Design
 ### Programming Language
@@ -50,6 +50,9 @@ user should be able to filter the view using autocompletion search.
 // Install all the dependencies.
 ➜  sf-movies git:(master) ✗ npm install
 
-// Then start the node server, it will listen to port 3001.
+// Then start the node server, it will listen to port 3000.
 ➜  sf-movies git:(master) ✗ npm start
 ```
+
+### Note
+> The client side will listen to port 3000 and it will proxy all the http requests to port 3001(sever side application).
