@@ -6,6 +6,7 @@ import './App.css';
 import Sidebar from './Sidebar';
 import Map from './Map';
 import { _load } from './redux/modules/movies';
+import { setQuery } from './redux/modules/search';
 
 class App extends Component {
 
@@ -23,6 +24,7 @@ class App extends Component {
       page: 1,
       title: ''
     }
+    dispatch(setQuery(query));
     dispatch(_load(query));
   };
   render() {

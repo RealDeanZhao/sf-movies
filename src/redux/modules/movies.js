@@ -5,7 +5,8 @@ const LOAD_FAILURE = 'sf-movies/movies/LOAD_FAILURE';
 const initialState = {
     done: true,
     list: [],
-    count: 0
+    count: 0,
+    totalPage: 1
 }
 export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
@@ -19,6 +20,8 @@ export default function reducer(state = initialState, action = {}) {
                 ...state,
                 done: true,
                 list: action.result.data,
+                count: action.result.count,
+                totalPage: action.result.totalPage,
                 error: null
             };
         case LOAD_FAILURE:

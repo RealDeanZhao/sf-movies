@@ -14,7 +14,7 @@ class Searchbox extends Component {
             <div className='searchbox'>
                 <form onSubmit={handleSubmit}>
                     <div className='input-group'>
-                        <Field name='title' type='text' component="input" className='form-control' placeholder='Search by the title' />
+                        <Field name='title' type='text' component='input' className='form-control' placeholder='Search by the title' />
                         <span className='input-group-btn'>
                             <button className='btn btn-default' type='submit'>Search</button>
                         </span>

@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import './styles.css';
 import MovieList from '../MovieList';
 import Searchbox from '../Searchbox';
-import {_load} from '../redux/modules/movies';
+import { _load } from '../redux/modules/movies';
+import { setQuery } from '../redux/modules/search';
 
 class Sidebar extends Component {
 
@@ -15,11 +16,11 @@ class Sidebar extends Component {
         const query = {
             limit: 10,
             page: 1,
-            title: values.title
+            title: values.title ? values.title : ''
         }
         const {dispatch} = this.props;
+        dispatch(setQuery(query));
         dispatch(_load(query));
-        console.log(values);
     }
 
     render() {
