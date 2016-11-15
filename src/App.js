@@ -21,7 +21,7 @@ class App extends Component {
     var query = {
       limit: 10,
       page: 1,
-      title: 'Ant-Man'
+      title: ''
     }
     dispatch(_load(query));
   };

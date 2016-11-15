@@ -18,7 +18,6 @@ class Map extends Component {
     render() {
         const {movies} = this.props;
         const markerList = movies.list.map(function (movie) {
-            console.log(movie);
             return (
                 <MapMarker key={movie.id} lat={movie.lat} lng={movie.lng} text='A' ></MapMarker>
             )

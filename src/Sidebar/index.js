@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
-import './styles.css';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import { connect } from 'react-redux';
 
+import './styles.css';
 import MovieList from '../MovieList';
+import Searchbox from '../Searchbox';
+import {_load} from '../redux/modules/movies';
 
 class Sidebar extends Component {
 
     shouldComponentUpdate = shouldPureComponentUpdate;
 
+    handleSubmit = (values) => {
+        const query = {
+            limit: 10,
+            page: 1,
+            title: values.title
+        }
+        const {dispatch} = this.props;
+        dispatch(_load(query));
+        console.log(values);
+    }
+
     render() {
         const {movies} = this.props;
         return (
             <div className='sidebar'>
-                <div className='searchbox'>
-                    <div className='input-group'>
-                        <input type='text' className='form-control' placeholder='Search for the movie by the title' />
-                        <span className='input-group-btn'>
-                            <button className='btn btn-default' type='button'>Search!</button>
-                        </span>
-                    </div>
+                <div>
+                    <Searchbox onSubmit={this.handleSubmit}></Searchbox>
                 </div>
                 <div>
                     <MovieList movies={movies}></MovieList>
@@ -28,4 +37,4 @@ class Sidebar extends Component {
     }
 }
 
-export default Sidebar;
+export default connect()(Sidebar);

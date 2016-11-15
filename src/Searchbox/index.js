@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import './styles.css';
 import shouldPureComponentUpdate from 'react-pure-render/function';
+import { Field, reduxForm } from 'redux-form';
 
-import MovieList from '../Movie/MovieList';
+import './styles.css';
 
 class Searchbox extends Component {
-
     shouldComponentUpdate = shouldPureComponentUpdate;
 
     render() {
+        const {handleSubmit} = this.props;
+
         return (
             <div className='searchbox'>
-                <div className='input-group'>
-                    <input type='text' className='form-control' placeholder='Search for the movie by the title' />
-                    <span className='input-group-btn'>
-                        <button className='btn btn-default' type='button'>Search!</button>
-                    </span>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <div className='input-group'>
+                        <Field name='title' type='text' component="input" className='form-control' placeholder='Search by the title' />
+                        <span className='input-group-btn'>
+                            <button className='btn btn-default' type='submit'>Search</button>
+                        </span>
+                    </div>
+                </form>
             </div>
         );
     }
 }
+
+Searchbox = reduxForm({
+    form: 'searchbox'
+})(Searchbox);
 
 export default Searchbox;

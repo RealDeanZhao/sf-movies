@@ -50,13 +50,12 @@ export function loadError(error) {
 }
 
 export const _load = (query) => {
+    console.log('start to load movies');
     return (dispatch) => {
         dispatch(load());
-        fetch(`/api/movies?limit=${query.limit}&page=${query.page}&title=${query.title}`).then(function (res) {
-            return res.json();
-        }).then(function (json) {
-            const result = json;
-            dispatch(loadSuccess(result))
-        });
+        fetch(`/api/movies?limit=${query.limit}&page=${query.page}&title=${query.title}`)
+            .then(res => res.json())
+            .then(json => dispatch(loadSuccess(json)))
+            .catch(error => console.log(error));
     }
 }
