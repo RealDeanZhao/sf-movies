@@ -48,11 +48,13 @@ Auto Completion:
 * Google Map for React
 
 ### Project Structure
+This project structure is initialized by [create-react-app](https://github.com/facebookincubator/create-react-app)
+
 **MAP/**: The google map component wrapper.
 
 **MovieList/**: The component to show the movie list.
 
-**Searchbox/**: The component to search the movies from the backend.
+**Searchbox/**: The component to search the movies from the backend. Support autocompletion search.
 
 **Sidebar/**: The component that wrapper the MovieList and the Searchbox.
 
