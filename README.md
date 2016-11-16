@@ -13,7 +13,7 @@ user should be able to filter the view using autocompletion search.
 3. When searching the movies, the search button will be disabled.
 4. When searching the movies, the movie list should be hidden with a spinner.
 5. The movie list should be paginated.
-6. The user can search the movies by the title. It supports fuzzy search.
+6. The user can search the movies by the title. It supports fuzzy and case-insensitive search.
 
 ## Some snapshots of the app:
 There are not many markers on the map because the GOOGLE API has some limit for the request numbers to get the coordinate information. So I only get 10 records per page.
@@ -59,6 +59,8 @@ Disable the search button and hide the movie list with a spinner when searching.
 
 ### Run
 ```
+// Make sure that the server side is running.
+
 // Install all the dependencies.
 ➜  sf-movies git:(master) ✗ npm install
 
