@@ -14,6 +14,7 @@ user should be able to filter the view using autocompletion search.
 4. When searching the movies, the movie list should be hidden with a spinner.
 5. The movie list should be paginated.
 6. The user can search the movies by the title. It supports fuzzy and case-insensitive search.
+7. Support the autocompletion search.
 
 ## Some snapshots of the app:
 There are not many markers on the map because the GOOGLE API has some limit for the request numbers to get the coordinate information. So I only get 10 records per page.
@@ -29,6 +30,10 @@ The pagination for the movie list:
 Disable the search button and hide the movie list with a spinner when searching.
 
 ![image](https://github.com/zestxjest/sf-movies/blob/master/snapshots/WhenSearching.jpg?raw=true)
+
+Auto Completion:
+
+![image](https://github.com/zestxjest/sf-movies/blob/master/snapshots/AutoCompletion.jpg?raw=true)
 
 ## Technical Design
 ### Programming Language

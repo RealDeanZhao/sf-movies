@@ -79,11 +79,17 @@ export const _load = () => {
     }
 }
 
+function escapeRegexCharacters(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 export function filterSuggestions(value, suggestions) {
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
-    const result = inputLength === 0 ? [] : suggestions.filter(suggestion =>
-        suggestion.title.toLowerCase().slice(0, inputLength) === inputValue);
+    const escapedValue = escapeRegexCharacters(value.trim());
+    let result = [];
+    if (escapedValue !== '') {
+        const regex = new RegExp('\\b' + escapedValue, 'i');
+        result = suggestions.filter(suggestion => regex.test(suggestion.title));
+    }
 
     return {
         type: FILTER,
