@@ -1,32 +1,79 @@
 import React, { Component } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
-import { Field, reduxForm } from 'redux-form';
+import Autosuggest from 'react-autosuggest';
+import { connect } from 'react-redux';
 
 import './styles.css';
+import { _load } from '../redux/modules/suggestions';
+import { setQuery } from '../redux/modules/search';
+import { filterSuggestions } from '../redux/modules/suggestions';
+import { clearSuggestions } from '../redux/modules/suggestions';
+import AutoCompleteInput from './AutoCompleteInput';
+
+const renderSuggestion = suggestion => (
+    <span>{suggestion.title}</span>
+);
+
+const getSuggestionValue = suggestion => suggestion.title;
 
 class Searchbox extends Component {
     shouldComponentUpdate = shouldPureComponentUpdate;
 
+    componentDidMount() {
+        const {dispatch} = this.props;
+        dispatch(_load());
+    }
+
+    onChange = (event, { newValue }) => {
+        const {dispatch, search} = this.props;
+        const query = {
+            limit: search.limit,
+            page: search.page,
+            title: newValue
+        }
+        dispatch(setQuery(query));
+    };
+
+    onSuggestionsFetchRequested = ({ value }) => {
+        const {suggestions, dispatch} = this.props;
+        dispatch(filterSuggestions(value, suggestions))
+    }
+
+    onSuggestionsClearRequested = () => {
+        const {dispatch} = this.props;
+        dispatch(clearSuggestions())
+    };
+
     render() {
-        const {handleSubmit, done} = this.props;
+        const {search, filteredSuggestions} = this.props;
+
+        const inputProps = {
+            placeholder: 'Search for the movies by the title.',
+            value: search.title,
+            onChange: this.onChange,
+            className: 'form-control'
+        };
 
         return (
             <div className='searchbox'>
-                <form onSubmit={handleSubmit}>
-                    <div className='input-group'>
-                        <Field name='title' type='text' component='input' className='form-control' placeholder='Search by the title' />
-                        <span className='input-group-btn'>
-                            <button className='btn btn-default' type='submit' disabled={!done}>Search</button>
-                        </span>
-                    </div>
-                </form>
+                <Autosuggest
+                    suggestions={filteredSuggestions}
+                    onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    inputProps={inputProps}
+                    renderInputComponent={(inputProps) => (<AutoCompleteInput inputProps={inputProps} />)}
+                    />
             </div>
         );
     }
 }
 
-Searchbox = reduxForm({
-    form: 'searchbox'
-})(Searchbox);
+const mapStateToProps = (state, ownProps) => ({
+    filteredSuggestions: state.suggestions.filteredList,
+    suggestions: state.suggestions.list,
+    search: state.search
+});
 
-export default Searchbox;
+export default connect(mapStateToProps)(Searchbox);
