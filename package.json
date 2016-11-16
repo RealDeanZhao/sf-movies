@@ -10,6 +10,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-google-maps": "beta",
+    "react-loader": "^2.4.0",
     "react-paginate": "^2.2.3",
     "react-pure-render": "^1.0.2",
     "react-redux": "^4.4.6",

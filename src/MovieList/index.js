@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import shouldPureComponentUpdate from 'react-pure-render/function';
 import { connect } from 'react-redux';
 import ReactPaginate from 'react-paginate';
+import Loader from 'react-loader';
 
 import './styles.css';
 import MovieItem from './MovieItem';
@@ -33,23 +34,25 @@ class MovieList extends Component {
         }, this);
         return (
             <div className='movie-list' ref='movieList'>
-                <div className='list-group'>
-                    {movieList}
-                    <div className='list-group-item'>
-                        <ReactPaginate previousLabel={"<"}
-                            nextLabel={">"}
-                            breakLabel={<a>...</a>}
-                            breakClassName={"break-me"}
-                            pageNum={movies.totalPage}
-                            marginPagesDisplayed={1}
-                            pageRangeDisplayed={2}
-                            clickCallback={this.handlePageClick}
-                            containerClassName={'pagination'}
-                            subContainerClassName={'pages pagination'}
-                            activeClassName={'active'}
-                            forceSelected={search.page - 1} />
+                <Loader loaded={movies.done}>
+                    <div className='list-group'>
+                        {movieList}
+                        <div className='list-group-item'>
+                            <ReactPaginate previousLabel={"<"}
+                                nextLabel={">"}
+                                breakLabel={<a>...</a>}
+                                breakClassName={"break-me"}
+                                pageNum={movies.totalPage}
+                                marginPagesDisplayed={1}
+                                pageRangeDisplayed={2}
+                                clickCallback={this.handlePageClick}
+                                containerClassName={'pagination'}
+                                subContainerClassName={'pages pagination'}
+                                activeClassName={'active'}
+                                forceSelected={search.page - 1} />
+                        </div>
                     </div>
-                </div>
+                </Loader>
             </div >
         );
     }

@@ -8,7 +8,7 @@ class Searchbox extends Component {
     shouldComponentUpdate = shouldPureComponentUpdate;
 
     render() {
-        const {handleSubmit} = this.props;
+        const {handleSubmit, done} = this.props;
 
         return (
             <div className='searchbox'>
@@ -16,7 +16,7 @@ class Searchbox extends Component {
                     <div className='input-group'>
                         <Field name='title' type='text' component='input' className='form-control' placeholder='Search by the title' />
                         <span className='input-group-btn'>
-                            <button className='btn btn-default' type='submit'>Search</button>
+                            <button className='btn btn-default' type='submit' disabled={!done}>Search</button>
                         </span>
                     </div>
                 </form>

@@ -28,7 +28,7 @@ class Sidebar extends Component {
         return (
             <div className='sidebar'>
                 <div>
-                    <Searchbox onSubmit={this.handleSubmit}></Searchbox>
+                    <Searchbox onSubmit={this.handleSubmit} done={movies.done}></Searchbox>
                 </div>
                 <div>
                     <MovieList movies={movies}></MovieList>
