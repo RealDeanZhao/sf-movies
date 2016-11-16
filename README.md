@@ -18,9 +18,17 @@ user should be able to filter the view using autocompletion search.
 ## Some snapshots of the app:
 There are not many markers on the map because the GOOGLE API has some limit for the request numbers to get the coordinate information. So I only get 10 records per page.
 
-![image](https://github.com/zestxjest/sf-movies/blob/master/SearchByTitle.jpg?raw=true)
+The result after searching by the title:
 
-![image](https://github.com/zestxjest/sf-movies/blob/master/Pagination.jpg?raw=true)
+![image](https://github.com/zestxjest/sf-movies/blob/master/snapshots/SearchByTitle.jpg?raw=true)
+
+The pagination for the movie list:
+
+![image](https://github.com/zestxjest/sf-movies/blob/master/snapshots/Pagination.jpg?raw=true)
+
+Disable the search button and hide the movie list with a spinner when searching.
+
+![image](https://github.com/zestxjest/sf-movies/blob/master/snapshots/WhenSearching.jpg?raw=true)
 
 ## Technical Design
 ### Programming Language
