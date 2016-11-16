@@ -46,6 +46,7 @@ Auto Completion:
 * React
 * Redux
 * Google Map for React
+* Bootstrap
 
 ### Project Structure
 This project structure is initialized by [create-react-app](https://github.com/facebookincubator/create-react-app)
